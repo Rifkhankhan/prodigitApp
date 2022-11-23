@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-1">
+      <div class="box">
+        <div class="u-center-text">
+          <h3 class="heading">Sign in</h3>
+        </div>
+        <form>
+          <div class="input-box">
+            <div class="email-box">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                ngModel
+                email
+              />
+            </div>
+
+            <div class="password-box">
+              <input
+                type="password"
+                name="password"
+                class="password"
+                placeholder="Password"
+                required
+                ngModel
+                password
+              />
+            </div>
+          </div>
+          <div class="button">
+            <button type="submit" routerLink="register">Login</button>
+          </div>
+        </form>
+
+
+        <div class="signup">
+          <a  routerLink="/register">Create an Account!</a>
+        </div>
+      </div>
+    </div>
+    <div class="col col-2"></div>
+  </div>
+</div>
