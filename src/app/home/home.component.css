@@ -1,0 +1,110 @@
+
+.container
+{
+  position: relative;
+  width: 80%;
+  box-shadow: 0 1px 10px black;
+  margin-top:2rem ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 450px;
+  background-image: linear-gradient(to right bottom ,rgb(126, 175, 232),rgb(241, 92, 92),rgb(243, 157, 53));
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: none;
+  padding: 0;
+  height: 400px;
+  overflow: hidden;
+  box-shadow: 1px 2px solid black;
+  overflow: hidden;
+  min-width: 350px;
+  max-width: 80%;
+
+}
+
+.card .comment-box{
+  background-color: aqua;
+  min-height: 1rem;
+  width: 100%;
+  padding: 1rem;
+
+}
+.img-box{
+  background-color: blue;
+  height: 85%;
+  width: 100%;
+  background-image: url('../../assets/images/bg_1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.footer-box{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.2rem;
+}
+.btn{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgb(236, 244, 244);
+  width: 20%;
+  margin: 5px;
+  border-radius: 100px;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* margin: 1rem; */
+
+}
+
+ img{
+  width: 20px;
+  max-width: 25px;
+}
+
+
+.count{
+  font-size: 15px;
+}
+
+.btn:active
+{
+  background-color: blue;color: white;
+}
+
+.fab-btn{
+  background-color: white;
+
+  background-image: url('../../assets/images/plus1.png');
+  position: fixed;
+  top: 75%;
+  left: 78%;
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.fab-btn:hover{
+  cursor: pointer;
+}
