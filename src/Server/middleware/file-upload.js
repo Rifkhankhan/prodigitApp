@@ -1,10 +1,11 @@
 const multer = require('multer');
-
+const { storage } = require('debug/src/browser');
 const MIME_TYPE_MAP = {
 	'image/jpg': 'jpg',
 	'image/jpeg': 'jpeg',
 	'image/png': 'png',
-	'image/jfif': 'jfif'
+	'image/jfif': 'jfif',
+
 };
 const fileUpload = multer({
 	storage: multer.diskStorage({
@@ -14,6 +15,7 @@ const fileUpload = multer({
 
 		filename: (req, file, cb) => {
 			const ext = MIME_TYPE_MAP[file.mimetype];
+      req.body.filename = 'filenametogive';
 			cb(null, Date.now() + '.' + ext);
 		},
 		fileFilter: (req, file, cb) => {
@@ -24,4 +26,6 @@ const fileUpload = multer({
 	})
 }); //it provide middleware
 
-module.exports = fileUpload;
+// module.exports = fileUpload;
+
+module.exports = multer({ storage: fileUpload});

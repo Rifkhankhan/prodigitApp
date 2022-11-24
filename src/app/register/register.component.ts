@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './../Service/auth.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {  Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-register',
@@ -12,29 +12,33 @@ import {  Subscription } from 'rxjs';
 export class RegisterComponent implements OnInit, OnDestroy {
 	constructor(private authService: AuthService, private router: Router) {}
 	isLoading = false;
-	authSub: Subscription = new Subscription;
+	authSub: Subscription = new Subscription();
 
 	ngOnInit(): void {}
 
-	submitForm(form: NgForm) {
-		if (!form.valid) {
+	registerForm(form: NgForm) {
+		if (!form.valid && form.value.password === form.value.cpassword) {
 			return;
 		}
 
-		console.log(form.value);
-
-		this.authenticate(form.value.email, form.value.password);
-	}
-	authenticate(email: string, password: string) {
-		this.isLoading = true;
-
 		this.authSub = this.authService
-			.login(email, password)
-			.subscribe(resData => {
-				this.router.navigateByUrl('/home');
-				this.isLoading = false;
+			.signup(
+				form.value.name,
+				form.value.genter,
+				form.value.mobile,
+				form.value.location,
+				form.value.email,
+				form.value.password,
+				form.value.cpassword,
+				form.value.dob
+			)
+			.subscribe(() => {
+				if (localStorage.getItem('data')) {
+					this.router.navigateByUrl('/home');
+				}
 			});
 	}
+
 	ngOnDestroy(): void {
 		if (this.authSub) {
 			this.authSub.unsubscribe();

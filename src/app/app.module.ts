@@ -6,15 +6,36 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './home/create/create.component';
-import { ViewComponent } from './home/view/view.component';
-import { EditComponent } from './home/edit/edit.component';
+import { EditComponent } from './profile/edit/edit.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { LayoutComponent } from './layout/layout.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-	declarations: [AppComponent, RegisterComponent, HomeComponent, CreateComponent, ViewComponent, EditComponent],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,HttpClientModule],
+	declarations: [
+		AppComponent,
+		RegisterComponent,
+		HomeComponent,
+		CreateComponent,
+		EditComponent,
+    ProfileComponent,
+    ChangePasswordComponent,
+    LayoutComponent
+	],
+	imports: [
+    CommonModule,
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+
+	],
 	providers: [],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
+  
 })
 export class AppModule {}

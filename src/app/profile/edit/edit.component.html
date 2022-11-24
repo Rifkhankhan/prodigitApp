@@ -1,0 +1,57 @@
+<app-layout></app-layout>
+
+<div class="container">
+  <div class="card">
+    <div class="side detail-box">
+        <div class=" detail name-box">
+          <label for="name">Name : </label>
+          <input type="text" name="name" id="" value="{{userData.name}}">
+        </div>
+
+        <div class="detail mobile-box">
+          <label for="mobile">Mobile : </label>
+          <input type="number" name="mobile" id="" value="{{userData.mobile}}">
+
+        </div>
+
+        <div class="detail genter-box">
+          <label for="genter">Genter : </label>
+          <input type="genter" name="genter" id="" value="{{userData.genter}}">
+
+        </div>
+
+
+        <div class="detail email-box">
+          <label for="email">Email : </label>
+          <input type="email" name="email" id="" value="{{userData.email}}">
+
+        </div>
+
+        <div class="detail location-box">
+          <label for="location">Location : </label>
+          <input type="text" name="location" id="" value="{{userData.location}}">
+
+        </div>
+    </div>
+
+
+    <div class=" side img-box">
+      <label for="file" class="side left-side">
+        Click and Choose Pic
+        <input
+          type="file"
+          name="img"
+          id="file"
+          formControlName="image"
+          hidden
+
+        />
+        <img src="../../../assets/images/bg_1.jpg" alt="">
+      </label>
+    </div>
+  </div>
+
+  <div class="button" routerLink="/profile/edit/12">
+    <p>Update Profile</p>
+  </div>
+</div>

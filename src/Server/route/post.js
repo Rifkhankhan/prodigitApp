@@ -5,9 +5,9 @@ var fileUpload = require('../middleware/file-upload');
 const multer = require('multer');
 
 
-router.post('/create', PostController.createPost);
-router.get('/:postId', PostController.getPost);
-router.get('/posts/:userId', PostController.getPostsByUserId);
-router.delete('/post/:postId', PostController.deletePostById);
+router.post('/create',fileUpload.single('image'), PostController.createPost);
+// router.get('/:postId', PostController.getPost);
+router.get('/posts', PostController.getPosts);
+// router.delete('/post/:postId', PostController.deletePostById);
 
 module.exports = router;

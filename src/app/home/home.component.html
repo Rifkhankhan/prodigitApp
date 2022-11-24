@@ -1,57 +1,36 @@
-<nav
-  class="navbar navbar-expand-lg navbar-dark bg-primary"
-  style="width: 80%; margin: auto"
->
-  <div class="container-fluid">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item dropdown f-right">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown link
-          </a>
-          <ul
-            class="dropdown-menu f-right"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
+<app-layout></app-layout>
 <div class="container">
-  <div class="card">
+    <div  class="card" >
+      <div class="comment-box">
+       <!-- {{post.comment}} -->
+      </div>
+      <div class="img-box">
+        <!-- <img [src]="post.image" alt=""> -->
+      </div>
+      <!-- <div class="footer-box">
+        <div class="btn like-btn">
+          <span class="count like-count">{{post.like}}</span>
+          <img src="../../assets/images/like.png" alt="">
+        </div>
+        <div  class="btn unlike-btn">
+          <span class="count unlike-count">{{post.unlike}}</span>
+          <img src="../../assets/images/dislike.png" alt="">
+        </div>
+        <div  class="btn comment-btn">
+          <span class="count comment-count">{{post.comment}}</span>
+          <img src="../../assets/images/conversation.png" alt="">
+        </div>
+        <div  class="btn share-btn">
+          <span class="share-count">{{post.share}}</span>
+          <img src="../../assets/images/share.png" alt="">
+
+        </div>
+      </div> -->
+  </div>
+
+
+  <!-- <div class="card">
     <div class="comment-box">
       Hi im Rifkhan this is my first comment
       Hi im Rifkhan this is my first comment
@@ -78,36 +57,7 @@
 
       </div>
     </div>
-  </div>
-
-  <div class="card">
-    <div class="comment-box">
-      Hi im Rifkhan this is my first comment
-      Hi im Rifkhan this is my first comment
-      Hi im Rifkhan this is my first comment
-
-    </div>
-    <div class="img-box"></div>
-    <div class="footer-box">
-      <div class="btn like-btn">
-        <span class="count like-count">5</span>
-        <img src="../../assets/images/like.png" alt="">
-      </div>
-      <div  class="btn unlike-btn">
-        <span class="count unlike-count">12</span>
-        <img src="../../assets/images/dislike.png" alt="">
-      </div>
-      <div  class="btn comment-btn">
-        <span class="count comment-count">12</span>
-        <img src="../../assets/images/conversation.png" alt="">
-      </div>
-      <div  class="btn share-btn">
-        <span class="share-count">45</span>
-        <img src="../../assets/images/share.png" alt="">
-
-      </div>
-    </div>
-  </div>
+  </div> -->
 
   <div class="fab-btn" routerLink="/home/create">
 

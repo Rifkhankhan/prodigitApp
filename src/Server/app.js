@@ -19,7 +19,7 @@ mongoose
 	)
 	.then(() => {
 		console.log('connected to Database');
-		app.listen(5000); // start Node + Express server on port 5000
+		app.listen(3000); // start Node + Express server on port 5000
 	})
 	.catch((error) => {
 		console.log(error);
@@ -67,5 +67,5 @@ app.use((error, req, res, next) => {
 });
 
 
-app.use('/uploads', express.static(path.join('Server/uploads')));
+app.use('/uploads', express.static(path.join('/uploads')));
 

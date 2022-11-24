@@ -1,5 +1,7 @@
-import { EditComponent } from './home/edit/edit.component';
-import { ViewComponent } from './home/view/view.component';
+import { AuthGuard } from './auth.guard';
+import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditComponent } from './profile/edit/edit.component';
 import { CreateComponent } from './home/create/create.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -22,42 +24,47 @@ const routes: Routes = [
 		children: [
 			{
 				path: '',
-				component: HomeComponent
+				component: HomeComponent,
+				canActivate: [AuthGuard]
 			},
 			{
 				path: 'create',
-				component: CreateComponent
-			},
-      {
-        path:'post/view/:id',
-        component:ViewComponent
-      },
-      {
-        path:'post/edit/:id',
-        component:EditComponent
-      }
-		]
+				component: CreateComponent,
+				canActivate: [AuthGuard]
+			}
+		],
+		canActivate: [AuthGuard]
 	},
 	{
 		path: 'register',
 		component: RegisterComponent
 	},
-
-	//  {
-	//    path:'dashboard',
-	//    component:DashboardComponent,
-	//    children:[
-
-	//      {
-	//        path:'dashboard1',
-	//        component:Dashboard1Component
-	//      },
-	//      {
-	//        path:'dashboard2',
-	//        component:Dashboard2Component
-	//      }
-	//    ]
-	//  }
+	{
+		path: 'profile',
+		children: [
+			{
+				path: '',
+				children: [
+					{
+						path: '',
+						component: ProfileComponent,
+						canActivate: [AuthGuard]
+					},
+					{
+						path: 'edit/:id',
+						component: EditComponent,
+						canActivate: [AuthGuard]
+					},
+					{
+						path: 'change',
+						component: ChangePasswordComponent,
+						canActivate: [AuthGuard]
+					}
+				]
+			}
+		],
+		canActivate: [AuthGuard]
+	},
 
 	{
 		path: '**',

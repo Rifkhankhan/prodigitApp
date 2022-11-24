@@ -7,6 +7,8 @@ const multer = require('multer');
 
 router.post('/SignUp', AuthController.signUp);
 router.post('/SignIn', AuthController.signIn);
-router.post('/updatePassword/:userId', AuthController.updatePassword);
+router.get('/getUser/:id', AuthController.getUser);
+router.get('/getUserPassword/:id', AuthController.getUserPassword);
+router.patch('/updatePassword', AuthController.updatePassword);
 
 module.exports = router;

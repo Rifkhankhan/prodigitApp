@@ -1,33 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './../Service/auth.service';
 import { NgForm } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+	selector: 'app-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+	constructor(private authService: AuthService, private router: Router) {}
+	isLoading = false;
+	authSub: Subscription = new Subscription();
 
-  submitted = false
-  signupform!: NgForm;
-  constructor() { }
+	ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  submitform(form:NgForm){
-    this.submitted=true;
-
-    if (!form.valid) {
+	submitform(form:NgForm) {
+		if (!form.valid) {
 			return;
 		}
 
-		const email = form.value.email;
-		const password = form.value.password;
+		this.authSub = this.authService
+			.login(form.value.email, form.value.password)
+			.subscribe(data => {
+				if (localStorage.getItem('data')) {
+					this.router.navigateByUrl('/home');
+				}
+			});
+	}
 
-
-
-    this.signupform.reset();
-  }
-
+	ngOnDestroy(): void {
+		if (this.authSub) {
+			this.authSub.unsubscribe();
+		}
+	}
 }
