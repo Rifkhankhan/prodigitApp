@@ -1,0 +1,49 @@
+
+<app-layout></app-layout>
+
+
+<div class="container" *ngIf="isLoading">
+  <p style="margin:2rem; font-size:2rem; color:white;">Loading...</p>
+  <div class="fab-btn" routerLink="/home/create"> </div>
+</div>
+
+<div class="container" *ngIf="!isLoading && posts.length <= 0">
+  <p style="margin:2rem; font-size:2rem; color:white;">There is no posts</p>
+  <div class="fab-btn" routerLink="/home/create"> </div>
+</div>
+
+<div class="container" *ngIf="!isLoading && posts.length > 0">
+
+    <div  class="card" *ngFor="let post of posts">
+      <div class="comment-box">
+       {{post.comment}}
+      </div>
+      <div class="img-box" >
+        <img [src]="post.image" alt="">
+      </div>
+
+      <div class="footer-box" >
+        <div class="btn like-btn" (click)="postLike(post.id)">
+          <span class="count like-count" >{{post.like}}</span>
+          <img src="../../assets/images/like.png" alt="">
+        </div>
+
+        <div  class="btn unlike-btn" (click)="postUnlike(post.id)">
+          <span class="count unlike-count" >{{post.dislike}}</span>
+          <img src="../../assets/images/dislike.png" alt="">
+        </div>
+
+        <div  class="btn comment-btn" (click)="postComment(post.id)">
+          <span class="count comment-count" >{{post.commentCount}}</span>
+          <img src="../../assets/images/conversation.png" alt="">
+        </div>
+
+        <div  class="btn share-btn" (click)="postShare(post.id)">
+          <span class="share-count" >{{post.share}}</span>
+          <img src="../../assets/images/share.png" alt="">
+        </div>
+      </div>
+  </div>
+
+  <div class="fab-btn" routerLink="/home/create"></div>
+</div>

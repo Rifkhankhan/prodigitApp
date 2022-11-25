@@ -1,0 +1,73 @@
+<app-layout></app-layout>
+
+<div class="container" *ngIf="!isLoading">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="card">
+      <div class="side detail-box">
+        <div class="detail name-box">
+          <label for="name">Name : </label>
+          <input type="text" name="name" id=""  formControlName='name'/>
+        </div>
+
+        <div class="detail mobile-box">
+          <label for="mobile">Mobile : </label>
+          <input
+            type="number"
+            name="mobile"
+            id=""
+            formControlName='mobile'
+          />
+        </div>
+
+        <div class="detail genter-box">
+          <label for="genter">Genter : </label>
+          <select name="genter" id="" formControlName="genter">
+            <option value="male" >
+              Male
+            </option>
+            <option value="female">
+              Female
+            </option>
+          </select>
+        </div>
+
+        <div class="detail email-box">
+          <label for="email">Email : </label>
+          <input type="email" name="email" id=""  formControlName='email'/>
+        </div>
+
+        <div class="detail location-box">
+          <label for="location">Location : </label>
+          <input
+            type="text"
+            name="location"
+            id=""
+            formControlName='location'
+          />
+        </div>
+      </div>
+
+      <div class="side img-box">
+        <label for="file" class="side left-side">
+          Click and Choose Pic
+          <input
+            type="file"
+            id="file"
+
+            hidden
+            (change)="uploadfile($event)"
+
+          />
+          <img [src]="form.get('image')?.value" *ngIf="form.get('image') && !imageSrc" alt="">
+          <img [src]="imageSrc" *ngIf="imageSrc "  style="height: 300px; width:500px">
+
+        </label>
+
+      </div>
+    </div>
+
+    <div class="button" >
+      <button type="submit" [disabled]="!form.valid">Update Profile</button>
+    </div>
+  </form>
+</div>
