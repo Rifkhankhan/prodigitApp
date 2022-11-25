@@ -5,16 +5,16 @@
         <div class="u-center-text">
           <h3 class="heading">Sign in</h3>
         </div>
-        <form  >
+        <form #appForm="ngForm" (ngSubmit)="submitform(appForm)">
           <div class="input-box">
             <div class="email-box">
               <input
                 type="email"
                 name="email"
                 placeholder="Email"
-                required
                 ngModel
                 email
+                required
               />
             </div>
 
@@ -24,20 +24,19 @@
                 name="password"
                 class="password"
                 placeholder="Password"
-                required
                 ngModel
                 password
+                required
               />
             </div>
           </div>
           <div class="button">
-            <button type="submit" >Login</button>
+            <button type="submit" [disabled]="!appForm.valid">Login</button>
           </div>
         </form>
 
-
         <div class="signup">
-          <a  routerLink="/register">Create an Account!</a>
+          <a routerLink="/register">Create an Account!</a>
         </div>
       </div>
     </div>

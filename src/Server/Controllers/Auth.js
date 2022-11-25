@@ -63,14 +63,8 @@ const signUp = async (req, res, next) => {
     return next(error);
   }
   res.status(200).json({
-    message: "Sign up Successfully",
-    data: {
-      userId: newUser.id,
-      name: newUser.name,
-      token: token,
+    message: true,
 
-      expiresIn: "1h"
-    },
   });
 };
 

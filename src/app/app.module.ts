@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import { CommonModule } from '@angular/common';
 		EditComponent,
     ProfileComponent,
     ChangePasswordComponent,
-    LayoutComponent
+    LayoutComponent,
+    LoginComponent
 	],
 	imports: [
     CommonModule,

@@ -32,10 +32,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 				form.value.cpassword,
 				form.value.dob
 			)
-			.subscribe(() => {
-				if (localStorage.getItem('data')) {
-					this.router.navigateByUrl('/home');
-				}
+			.subscribe((data) => {
+        if(data){
+          this.router.navigateByUrl('login');
+        }
 			});
 	}
 

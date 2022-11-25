@@ -1,16 +1,16 @@
-import { Router } from '@angular/router';
-import { AuthService } from './../Service/auth.service';
-import { NgForm } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../Service/auth.service';
 
 @Component({
-	selector: 'app-login',
-	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
-	constructor(private authService: AuthService, private router: Router) {}
+export class LoginComponent implements OnInit,OnDestroy {
+  constructor(private authService: AuthService, private router: Router) {}
 	isLoading = false;
 	authSub: Subscription = new Subscription();
 
@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 	submitform(form:NgForm) {
 		if (!form.valid) {
+      console.log('not');
+
 			return;
 		}
 

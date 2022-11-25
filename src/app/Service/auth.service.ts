@@ -144,15 +144,19 @@ export class AuthService {
 		};
 
 		return this.http
-			.post<AuthResponseData>('http://localhost:3000/api/auth/SignUp', newuser)
+			.post<any>('http://localhost:3000/api/auth/SignUp', newuser)
 			.pipe(
-				tap(data => {
-					const expirationTime = new Date(new Date().getTime() + +3600 * 1000);
-					localStorage.setItem('data', JSON.stringify(data));
+				map(data => {
 
-					this._user.next(
-						new User(data.name, data.userId, data.token, expirationTime)
-					);
+          console.log(data.message);
+
+          return data.message;
+					// const expirationTime = new Date(new Date().getTime() + +3600 * 1000);
+					// localStorage.setItem('data', JSON.stringify(data));
+
+					// this._user.next(
+					// 	new User(data.name, data.userId, data.token, expirationTime)
+					// );
 				})
 			);
 	}

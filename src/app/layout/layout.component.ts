@@ -1,3 +1,6 @@
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthService } from './../Service/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthService,private router : Router) { }
+	authSub: Subscription = new Subscription();
 
   ngOnInit(): void {
+  }
+
+  logout()
+  {
+    this.authService.logout();
+    this.router.navigateByUrl('login');
   }
 
 }
