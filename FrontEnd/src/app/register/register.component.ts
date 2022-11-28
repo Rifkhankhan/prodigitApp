@@ -13,6 +13,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	constructor(private authService: AuthService, private router: Router) {}
 	isLoading = false;
 	authSub: Subscription = new Subscription();
+  locations = [
+    {loca: 'Sri Lanka', value: 'srilanka'},
+    {name: 'India', value: 'india'},
+    {name: 'Pakistan', value: 'pakistan'},
+    {name: 'USA', value: 'usa'},
+  ];
 
 	ngOnInit(): void {}
 

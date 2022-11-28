@@ -1,3 +1,4 @@
+import { CreateCommentComponent } from './home/create-comment/create-comment.component';
 import { AuthGuard } from './auth.guard';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -30,6 +31,11 @@ const routes: Routes = [
 			{
 				path: 'create',
 				component: CreateComponent,
+				canActivate: [AuthGuard]
+			},
+      {
+				path: 'create-comment/:id',
+				component: CreateCommentComponent,
 				canActivate: [AuthGuard]
 			}
 		],

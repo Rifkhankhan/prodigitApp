@@ -14,6 +14,9 @@ import { ChangePasswordComponent } from './profile/change-password/change-passwo
 import { LayoutComponent } from './layout/layout.component';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateCommentComponent } from './home/create-comment/create-comment.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +28,9 @@ import { LoginComponent } from './login/login.component';
     ProfileComponent,
     ChangePasswordComponent,
     LayoutComponent,
-    LoginComponent
+    LoginComponent,
+    SidebarComponent,
+    CreateCommentComponent
 	],
 	imports: [
     CommonModule,
@@ -34,10 +39,11 @@ import { LoginComponent } from './login/login.component';
 		FormsModule,
 		ReactiveFormsModule,
 		HttpClientModule,
+		BrowserAnimationsModule,
 
 	],
 	providers: [],
 	bootstrap: [AppComponent],
-  
+
 })
 export class AppModule {}

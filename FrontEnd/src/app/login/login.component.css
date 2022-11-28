@@ -60,6 +60,10 @@
   align-items: center;
   /* margin-top: 8rem; */
 }
+.box input{
+  border: 0.5px solid lightcoral;
+  border-radius: 10px;
+}
 
 .email-box,.pasword-box{
   margin: 1rem;
@@ -72,6 +76,7 @@ input{
   padding: .8rem;
   font-size: large;
 }
+
 
 button{
   color: white;

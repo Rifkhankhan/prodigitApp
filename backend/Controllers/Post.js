@@ -1,23 +1,21 @@
-const HttpError = require("../models/http-error");
-const { validationResult } = require("express-validator");
-const Post = require("../models/post");
-
+const HttpError = require('../models/http-error');
+const { validationResult } = require('express-validator');
+const Post = require('../models/post');
 
 const createPost = async (req, res, next) => {
-	
 	console.log(req.file);
 	const url = req.protocol + '://' + req.get('host');
-	
+
 	const newPost = new Post({
-		date:new Date().toISOString() ,
+		date: new Date().toISOString(),
 		like: 0,
 		userComment: req.body.comment,
-    	comments:[],
+		comments: [],
 		image: url + '/uploads/' + req.file.filename,
 		userId: req.body.userId,
 		dislike: 0,
-    	share:0,
-    	commentCount:0
+		share: 0,
+		commentCount: 0
 	});
 	console.log(newPost);
 
@@ -30,10 +28,38 @@ const createPost = async (req, res, next) => {
 	res.json({ newPost: newPost.toObject({ getters: true }) });
 };
 
+const createComment = async (req, res, next) => {
+	const errors = validationResult(req);
+
+	if (!errors.isEmpty()) {
+		throw new HttpError('Invalid inputs passed, please check your data.', 422);
+	}
+
+	const { id, comment } = req.body;
+
+	var post;
+	try {
+		post = await Post.findById(id);
+	} catch (err) {
+		const error = new HttpError('finding post failed bt id,try again', 500);
+		return next(error);
+	}
+
+	
+	post.comments.push(comment)
+	post.commentCount = post.commentCount + 1;
+	
+	console.log(post.comments);
+	try {
+		await post.save();
+	} catch (err) {
+		const error = new HttpError('Creating Post failed,try again', 500);
+		return next(error);
+	}
+	res.json({ post: post.toObject({ getters: true }) });
+};
+
 const getPosts = async (req, res, next) => {
-
-
-
 	let posts;
 
 	try {
@@ -47,9 +73,7 @@ const getPosts = async (req, res, next) => {
 		res.status(201).json({ message: 'There is no Posts' });
 	} else {
 		res.status(200).json({
-			posts: posts.map((Post) =>
-				Post.toObject({ getters: true })
-			)
+			posts: posts.map((Post) => Post.toObject({ getters: true }))
 		});
 	}
 };
@@ -77,8 +101,6 @@ const getPost = async (req, res, next) => {
 	}
 };
 
-
-
 const deletePostById = async (req, res, next) => {
 	const PostId = req.params.PostId;
 	let Post;
@@ -105,7 +127,7 @@ const deletePostById = async (req, res, next) => {
 };
 
 const updatePostById = async (req, res, next) => {
-	const {id,type} = req.body;
+	const { id, type } = req.body;
 
 	let post;
 	try {
@@ -118,30 +140,27 @@ const updatePostById = async (req, res, next) => {
 		return next(error);
 	}
 
-  if(type === 'like')
-      post.like = post.like + 1;
-  else if(type === 'dislike')
-      post.dislike = post.dislike + 1;
-  else if(type === 'share')
-      post.share = post.share + 1;
-  else if(type === 'commentCount')
-      post.commentCount = post.commentCount + 1;
+	if (type === 'like') post.like = post.like + 1;
+	else if (type === 'dislike') post.dislike = post.dislike + 1;
+	else if (type === 'share') post.share = post.share + 1;
+	else if (type === 'commentCount') post.commentCount = post.commentCount + 1;
 
-  try {
-    console.log(post);
-    await post.save();
-  } catch (err) {
-    const error = new HttpError("Updated post is not saved ", 500);
-    return next(error);
-  }
+	try {
+		console.log(post);
+		await post.save();
+	} catch (err) {
+		const error = new HttpError('Updated post is not saved ', 500);
+		return next(error);
+	}
 
-  res.status(200).json({
-    message: "Updated post Successfully",
-    post: post.toObject({ getters: true }),
-  });
+	res.status(200).json({
+		message: 'Updated post Successfully',
+		post: post.toObject({ getters: true })
+	});
 };
 
 exports.updatePostById = updatePostById;
+exports.createComment = createComment;
 exports.getPosts = getPosts;
 exports.getPost = getPost;
 exports.deletePostById = deletePostById;

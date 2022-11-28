@@ -1,0 +1,39 @@
+<app-layout></app-layout>
+<div class="container">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="createComment()"
+    enctype="multipart/form-data"
+  >
+    <div class="card">
+      <div class="inline comment-box">
+        <textarea
+          type="text"
+          name="comment"
+          id=""
+          placeholder="Enter Your Comment"
+          formControlName="comment"
+
+        ></textarea>
+
+      </div>
+      <!-- <div class="inline img-box">
+        <label for="file" class="side left-side">
+          Click and Choose Pic
+          <input
+            type="file"
+            id="file"
+            hidden
+
+          />
+        </label>
+        <div class="side right-side">
+          <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+        </div>
+      </div> -->
+      <button type="submit" class="inline btn" [disabled]="!form.valid">
+        Post Comment
+      </button>
+    </div>
+  </form>
+</div>

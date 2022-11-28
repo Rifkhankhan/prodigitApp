@@ -34,6 +34,7 @@ const storage = multer.diskStorage({
 })
 
 router.post('/create',fileUpload.single("image"), PostController.createPost);
+router.patch('/createComment', PostController.createComment);
 router.patch('/updatePostById', PostController.updatePostById);
 router.get('/posts', PostController.getPosts);
 // router.delete('/post/:postId', PostController.deletePostById);

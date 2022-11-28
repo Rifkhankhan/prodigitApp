@@ -1,19 +1,12 @@
-<nav
-  class="navbar"
-  style="width: 82%; margin: auto"
->
+<nav style="width: 20%; margin: auto" class="sidebar">
   <div class="container-fluid">
     <ul>
+      <li >PRODIGIT</li>
       <li routerLink="/home">Home</li>
       <li routerLink="/profile">Profile</li>
       <li routerLink="/profile/change">Reset Password</li>
     </ul>
 
-    <div class="logoutdiv" (click)='logout()'>
-      LOGOUT
-    </div>
+    <div class="logoutdiv" (click)="logout()">LOGOUT</div>
   </div>
 </nav>
-
-
-<app-sidebar class="sidebar"></app-sidebar>

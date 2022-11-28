@@ -112,17 +112,15 @@ button:disabled{
   color: black;
 }
 
-.custom-select {
-  position: relative;
-}
+
 
 select{
-  position: static;
+  /* position: static; */
   width: 240px;
   margin:0 auto;
 }
 .date{
-  position: static;
+  /* position: static; */
   width: 240px;
   margin-left: -1.2rem;
 }

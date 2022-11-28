@@ -30,6 +30,27 @@ export class PostService {
 			);
 	}
 
+
+  addComment(comment: string,id: string) {
+
+		const data = {
+      id:id,
+      comment:comment
+    }
+
+		return this.http
+			.patch<any>('http://localhost:3000/api/post/createComment', data)
+			.pipe(
+				take(1),
+				switchMap(data => {
+					return this.Posts;
+				}),
+				tap(posts => {
+					this._posts.next(posts);
+				})
+			);
+	}
+
 	get Posts() {
 		return this._posts.asObservable();
 	}

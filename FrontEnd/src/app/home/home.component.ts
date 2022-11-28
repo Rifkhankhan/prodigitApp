@@ -4,8 +4,7 @@ import {
 	Component,
 	OnInit,
 	OnDestroy,
-	OnChanges,
-	SimpleChanges,
+
   ChangeDetectionStrategy
 } from '@angular/core';
 
@@ -23,6 +22,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 	doSub: Subscription = new Subscription();
 	posts: any = [];
 
+  likes = []
+  dislikes = [];
+  shares = []
+  comments = []
+
+  btn:any;
 
   ngOnInit() {
 		this.isLoading = true;
@@ -31,46 +36,32 @@ export class HomeComponent implements OnInit, OnDestroy {
 		this.postSub = this.postService.fetchPosts().subscribe(posts => {
 			if (posts.message) {
 				this.posts = [];
+        this.comments = []
 			} else {
 				this.posts = posts;
 			}
+
       this.isLoading = false;
-
-      console.log(posts);
-
 
 		});
 	}
 
-  // ngAfterViewChecked(): void {
-  //   this.isLoading = true;
-	// 	this.postSub = this.postService.fetchPosts().subscribe(posts => {
-	// 		if (posts.message) {
-	// 			this.posts = [];
-	// 		} else {
-	// 			this.posts = posts;
-	// 		}
-  //     this.isLoading = false;
-	// 	});
-
-  // }
-
-
-
-
 
 	postLike(id: string) {
-		console.log(id);
+    // this.likeCount = this.likeCount + 1
+    console.log('click');
 
 		this.actionSub = this.postService.updatePost(id, 'like').subscribe();
 	}
 	postUnlike(id: string) {
+    // this.dislikeCount = this.dislikeCount + 1
+
 		this.actionSub = this.postService.updatePost(id, 'dislike').subscribe();
 	}
 	postComment(id: string) {
-		this.actionSub = this.postService
-			.updatePost(id, 'commentCount')
-			.subscribe();
+		// this.actionSub = this.postService
+		// 	.addComment(id, 'commentCount')
+		// 	.subscribe();
 	}
 	postShare(id: string) {
 		this.actionSub = this.postService.updatePost(id, 'share').subscribe();

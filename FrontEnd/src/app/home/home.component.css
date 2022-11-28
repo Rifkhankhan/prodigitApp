@@ -1,10 +1,10 @@
 
 .container
 {
+  /* margin-top: 5.5rem !important; */
   position: relative;
-  width: 80%;
+  width: 80% !important;
   box-shadow: 0 1px 10px black;
-  margin-top:2rem ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,12 +22,11 @@
   border-radius: 5px;
   border: none;
   padding: 0;
-  max-height: 500px;
-  overflow: hidden;
+  max-height: 600px;
   box-shadow: 1px 2px solid black;
   overflow: hidden;
   min-width: 350px;
-  max-width: 60%;
+  max-width: 80%;
 
 }
 
@@ -40,13 +39,11 @@
 
 .img-box{
   width: 100% !important;
-  max-height: 350px;
-
+  max-height: 450px;
 }
 .img-box img{
-  
   width: 100%;
-  height: 320px;
+  height: 350px;
 }
 
 .footer-box{
@@ -77,14 +74,20 @@
 
 }
 
-.btn:active{
-  background-color: lightblue;
-  color: black;
-}
+
 
  .btn img{
   width: 20px;
   max-width: 25px;
+}
+
+.btn:active{
+  background-color: lightcoral;
+  color: black;
+}
+
+.btn:visited{
+  background-color: lightseagreen;
 }
 
 
@@ -92,10 +95,7 @@
   font-size: 15px;
 }
 
-.btn:active
-{
-  background-color: blue;color: white;
-}
+
 
 .fab-btn{
   background-color: white;
@@ -115,4 +115,16 @@
 
 .fab-btn:hover{
   cursor: pointer;
+}
+
+.comments-box{
+  width: 100%;
+  margin: 0%;
+  /* padding: .5rem; */
+}
+.comment{
+  margin-bottom: 0.5rem;
+  background-color: aqua !important;
+  padding: 10px;
+  text-align: center;
 }

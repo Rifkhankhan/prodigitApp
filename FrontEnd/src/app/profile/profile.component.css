@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   min-width: 450px;
   background-image: linear-gradient(to right bottom ,rgb(126, 175, 232),rgb(241, 92, 92),rgb(243, 157, 53));
 }
