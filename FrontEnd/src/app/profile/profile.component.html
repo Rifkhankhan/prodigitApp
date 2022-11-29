@@ -30,7 +30,8 @@
 
 
     <div class=" side2 img-box">
-      <img [src]="userData.image" alt="">
+      <img [src]="userData.image" alt="" *ngIf="userData.image">
+      <img src="../../assets/images/bg_1.jpg" alt="" *ngIf="!userData.image">
     </div>
   </div>
 
